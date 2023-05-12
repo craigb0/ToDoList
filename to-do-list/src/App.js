@@ -1,12 +1,12 @@
 import './App.css';
 import React from 'react';
-import Button from './components/Button.js'
+import Item from './components/Item.js'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Button/>
+        <Item/>
       </header>
     </div>
   );
