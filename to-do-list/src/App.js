@@ -30,7 +30,19 @@ class App extends React.Component {
 			taskList: [...prevState.taskList, taskData],
 		}))
 	}
-	
+
+	removeTask = (index) => {
+		this.setState(prevState => {
+		  const newTaskList = prevState.taskList.filter((task, i) => i !== index);
+		  return {
+			taskList: newTaskList.map((task, i) => ({
+			  ...task,
+			  id: i + 1,
+			})),
+		  };
+		});
+	}
+
 	render() {
 		return (
     		<div>
@@ -40,7 +52,7 @@ class App extends React.Component {
 				</div>
 				
 				<div className='App'>
-					<ItemList tasks={this.state.taskList}/>
+					<ItemList tasks={this.state.taskList} onClickFunction = {this.removeTask}/>
 				</div>
     		</div>
   		);
