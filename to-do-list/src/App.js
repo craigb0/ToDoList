@@ -36,7 +36,7 @@ class App extends React.Component {
     		<div>
     			<div className='App-header'>
         			To Do List
-					<AddButton onClickFunction = {this.addTask}/>
+					<AddButton onClickFunction = {this.addTask} id = {6}/>
 				</div>
 				
 				<div className='App'>
