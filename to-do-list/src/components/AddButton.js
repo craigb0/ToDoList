@@ -8,7 +8,6 @@ const AddButton = (props) => {
         if (taskData.trim() !== '') {
           props.onClickFunction({ title: taskData, completed: done });
           setTaskData('');
-          setDone(false);
         }
       };
     
@@ -24,11 +23,10 @@ const AddButton = (props) => {
           <br></br>
           Done:{' '}
           <input 
-            type="checkbox"
+            type="checkbox"  //won't uncheck for some reason
             value={done}
             onChange={(e) => setDone(e.target.checked)}
           />
-          <br></br>
           <br></br>
           <button onClick={handleClick}>Add Task</button>
         </div>
