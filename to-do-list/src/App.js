@@ -1,18 +1,21 @@
 import './App.css';
 import React from 'react';
-import Item from './components/Item.js'
+import ToDoItem from './components/ToDoItem.js'
 
-function App() {
-  return (
-    <div className="App">
-      <div className='Header'>
-        <header className="App-header">
-          To Do List
-        </header>
-      </div>
-      <Item/>
-    </div>
-  );
+class App extends React.Component {
+	render() {
+		return (
+    		<div>
+    			<div className='App-header'>
+        			To Do List
+				</div>
+				
+				<div className='App'>
+					<ToDoItem/>
+				</div>
+    		</div>
+  		);
+	}
 }
 
 export default App;

@@ -1,4 +1,4 @@
-const Item = (props) => {
+const ToDoItem = (props) => {
  return(
   <div classname="body">
     <div className="Title">
@@ -12,4 +12,4 @@ const Item = (props) => {
   );
 };
 
-export default Item;
+export default ToDoItem;
