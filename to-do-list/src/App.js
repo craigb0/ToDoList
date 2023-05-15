@@ -1,7 +1,13 @@
 import './App.css';
 import React from 'react';
-import ToDoItem from './components/ToDoItem.js'
+import ItemList from './components/ItemList';
 
+
+const testData =[
+	{"title": "delectus aut autem","completed": false},
+	{"title": "delectus aut autem","completed": false},
+	{"title": "delectus aut autem","completed": false},
+];
 class App extends React.Component {
 	render() {
 		return (
@@ -11,7 +17,7 @@ class App extends React.Component {
 				</div>
 				
 				<div className='App'>
-					<ToDoItem/>
+					<ItemList tasks={testData}/>
 				</div>
     		</div>
   		);

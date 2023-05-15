@@ -1,14 +1,14 @@
 const ToDoItem = (props) => {
- return(
-  <div classname="body">
-    <div className="Title">
-      titleName
-    </div>
+	return(
+		<div classname="ToDoItemBody">
+    		<div className="Title">
+      			{props.title}
+    		</div>
 
-      <div className="Completion">
-        y/n?
-      </div>
-    </div>
+    		<div className="Completion">
+        		{props.completed}
+      		</div>
+    	</div>
   );
 };
 
