@@ -6,7 +6,7 @@ const ToDoItem = (props) => {
     		</div>
 
     		<div className="Completion">
-        		{String(props.completed)}
+        		{props.completed === true ? 'Done' : 'Not done'}
       		</div>
     	</div>
   );
