@@ -2,7 +2,7 @@ const ToDoItem = (props) => {
 	return(
 		<div classname="ToDoItemBody">
     		<div className="Title">
-      			{props.title}
+      			<h2>{props.title}</h2>
     		</div>
 
     		<div className="Completion">
