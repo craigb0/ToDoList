@@ -1,18 +1,20 @@
 import './App.css';
 import React from "react";
 import ItemList from './components/ItemList';
-import taskArray from './components/initalTasks';
 import AddButton from './components/AddButton';
 
 
 class App extends React.Component {
 	state ={
-		arrayLen: 0,
+		taskList: [
+			{"title": "delectus aut autem","completed": false},
+			{"title": "delectus aut autem","completed": true},
+			{"title": "delectus aut autem","completed": false},],
 	};
 	
-	addTask = () => {
+	addTask = (taskData) => {
 		this.setState(prevState => ({
-			arrayLen: prevState.arrayLen + 1,
+			taskList: [...prevState.taskList, taskData],
 		}))
 	}
 	
@@ -22,11 +24,10 @@ class App extends React.Component {
     			<div className='App-header'>
         			To Do List
 					<AddButton onClickFunction = {this.addTask}/>
-					{this.state.arrayLen}
 				</div>
 				
 				<div className='App'>
-					<ItemList tasks={taskArray}/>
+					<ItemList tasks={this.state.taskList}/>
 				</div>
     		</div>
   		);

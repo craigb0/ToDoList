@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.AddButton {
+  text-align: center;
+  font-size: calc(5px + 2vmin);
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
