@@ -5,9 +5,12 @@ import Item from './components/Item.js'
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Item/>
-      </header>
+      <div className='Header'>
+        <header className="App-header">
+          To Do List
+        </header>
+      </div>
+      <Item/>
     </div>
   );
 }
