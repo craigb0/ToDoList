@@ -6,7 +6,7 @@ const ToDoItem = (props) => {
     		</div>
 
     		<div className="Completion">
-        		{props.completed}
+        		{String(props.completed)}
       		</div>
     	</div>
   );
