@@ -3,13 +3,12 @@ import React, { useState } from 'react';
 const AddButton = (props) => {
 	const [taskData, setTaskData] = useState('');
     const [done, setDone] = useState(false);
-    const [idNum, setIdNum] = useState(props.id);
 
     const handleClick = () => {
         if (taskData.trim() !== '') {
-          props.onClickFunction({ title: taskData, completed: done, id:idNum});
+          props.onClickFunction({ title: taskData, completed: done, id:props.id});
           setTaskData('');
-          setIdNum(idNum + 1);
+          
         }
       };
     

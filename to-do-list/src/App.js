@@ -8,6 +8,7 @@ import axios from 'axios';
 class App extends React.Component {
 	state ={
 		taskList: [],
+		id:1,
 	};
 	
 	componentDidMount() {
@@ -17,6 +18,7 @@ class App extends React.Component {
 				const tasksToSet = apiTasks.slice(0, 5);
 				this.setState({
 					taskList: tasksToSet,
+					id: tasksToSet.length +1,
 				});
 
 			})
@@ -25,20 +27,22 @@ class App extends React.Component {
 			});
 	}
 
-	addTask = (taskData) => {
+	addTask = (taskData, idNum) => {
 		this.setState(prevState => ({
 			taskList: [...prevState.taskList, taskData],
+			id: prevState.id +1,
 		}))
 	}
 
 	removeTask = (index) => {
 		this.setState(prevState => {
-		  const newTaskList = prevState.taskList.filter((task, i) => i !== index);
+		  const newTaskList = prevState.taskList.filter((task, i) => i+1 !== index);
 		  return {
 			taskList: newTaskList.map((task, i) => ({
 			  ...task,
 			  id: i + 1,
 			})),
+			id: prevState.id -1,
 		  };
 		});
 	}
@@ -48,7 +52,7 @@ class App extends React.Component {
     		<div>
     			<div className='App-header'>
         			To Do List
-					<AddButton onClickFunction = {this.addTask} id = {6}/>
+					<AddButton onClickFunction = {this.addTask} id = {this.state.id}/>
 				</div>
 				
 				<div className='App'>
