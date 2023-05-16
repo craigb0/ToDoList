@@ -29,7 +29,7 @@ const AddButton = (props) => {
             onChange={(e) => setDone(e.target.checked)}
           />
           <br></br>
-          <button onClick={handleClick}>Add Task</button>
+          <button onClick={handleClick}>Add ask</button>
         </div>
       );
 }
