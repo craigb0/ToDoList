@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import Reducer function from 'path';
+import idReducer from "./idSlice";
 
-export default configureStore({
+export const store = configureStore({
 	reducer: {
 		id: idReducer,
-		taskList: taskListReducer,
+		// taskList: taskListReducer,
 	},
 });
