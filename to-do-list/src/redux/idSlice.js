@@ -21,4 +21,5 @@ export const idSlice = createSlice({
 });
 
 export const { increment, decrement, incrementByAmount } = idSlice.actions;
+export const selectId = (state) => state.id.value;
 export default idSlice.reducer;
