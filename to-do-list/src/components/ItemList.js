@@ -1,14 +1,16 @@
+import {useDispatch, useSelector} from "react-redux";
 import ToDoItem from "./ToDoItem";
+import {selectTaskList} from "../redux/taskListSlice";
 
 const ItemList = (props) => {
+	const tasks = useSelector(selectTaskList);
 	return (
 		<div className='itemList'>
-			{props.tasks.map((task) => (
+			{tasks.map((task) => (
 				<ToDoItem
 					title={task.title}
 					completed={task.completed}
 					id={task.id}
-					delFunction={props.delFunction}
 				/>
 			))}
 		</div>

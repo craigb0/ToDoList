@@ -1,6 +1,12 @@
+import {useDispatch} from "react-redux";
+import {removeTask} from "../redux/taskListSlice";
+import {decrement} from "../redux/idSlice";
+
 const ToDoItem = (props) => {
+	const dispatch = useDispatch();
 	const handleDelClick = () => {
-		props.delFunction(props.id);
+		dispatch(removeTask(props.id));
+		dispatch(decrement());
 	};
 
 	return (

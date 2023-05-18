@@ -1,17 +1,25 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {addTask} from "../redux/taskListSlice";
+import {increment, selectId} from "../redux/idSlice";
 
 const AddButton = (props) => {
 	const [taskData, setTaskData] = useState("");
 	const [done, setDone] = useState(false);
+	const dispatch = useDispatch();
+	const id = useSelector(selectId);
 
 	const handleClick = () => {
 		if (taskData.trim() !== "") {
-			props.onClickFunction({
-				title: taskData,
-				completed: done,
-				id: props.id,
-			});
+			dispatch(
+				addTask({
+					title: taskData,
+					completed: done,
+					id: id,
+				})
+			);
 			setTaskData("");
+			dispatch(increment());
 		}
 	};
 
