@@ -1,11 +1,11 @@
 import "./App.css";
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 import ItemList from "./components/ItemList";
 import OldAddButton from "./components/OldAddButton";
 import axios from "axios";
 import {selectId, setId} from "./redux/idSlice";
 import {useSelector, useDispatch} from "react-redux";
-import {selectTaskList, setList} from "./redux/taskListSlice";
+import {setList} from "./redux/taskListSlice";
 // import AddButton from "./AddButton";
 
 const App = () => {
@@ -30,7 +30,7 @@ const App = () => {
 	return (
 		<div>
 			<div className='App-header'>
-				To Do List {useSelector(selectId)}
+				To Do List
 				<OldAddButton id={useSelector(selectId)} />
 				{/* <AddButton /> */}
 			</div>
