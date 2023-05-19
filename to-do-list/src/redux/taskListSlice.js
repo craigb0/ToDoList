@@ -17,7 +17,6 @@ export const taskListSlice = createSlice({
 					...task,
 					id: i + 1,
 				}));
-			console.log("attempt");
 		},
 
 		editTask: (state, action) => {
