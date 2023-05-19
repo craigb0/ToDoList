@@ -20,8 +20,11 @@ export const taskListSlice = createSlice({
 		},
 
 		editTask: (state, action) => {
-			const {index, newTask} = action.payload;
-			state.value[index] = newTask;
+			const index = action.payload[0];
+			const newTask = action.payload[1];
+			const tasks = state.value.slice();
+			tasks[index - 1] = newTask;
+			state.value = tasks;
 		},
 
 		setList: (state, action) => {

@@ -1,12 +1,12 @@
 import "./App.css";
 import React, {useEffect} from "react";
 import ItemList from "./components/ItemList";
-import OldAddButton from "./components/OldAddButton";
+import AddButton from "./components/AddButton";
 import axios from "axios";
 import {selectId, setId} from "./redux/idSlice";
 import {useSelector, useDispatch} from "react-redux";
 import {setList} from "./redux/taskListSlice";
-// import AddButton from "./AddButton";
+import {MDBContainer} from "mdb-react-ui-kit";
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -29,15 +29,24 @@ const App = () => {
 
 	return (
 		<div>
-			<div className='App-header'>
-				To Do List
-				<OldAddButton id={useSelector(selectId)} />
-				{/* <AddButton /> */}
-			</div>
-
-			<div className='App'>
-				<ItemList />
-			</div>
+			<MDBContainer fluid>
+				<div
+					className='d-flex justify-content-center align-items-top'
+					style={{height: "15vh"}}
+				>
+					<div className='text-center'>
+						<h1 className='mb-3'>
+							To Do List {useSelector(selectId)}
+						</h1>
+						<AddButton />
+					</div>
+				</div>
+			</MDBContainer>
+			<MDBContainer>
+				<div className='align-items-center'>
+					<ItemList />
+				</div>
+			</MDBContainer>
 		</div>
 	);
 };

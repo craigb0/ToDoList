@@ -7,11 +7,14 @@ const ItemList = (props) => {
 	return (
 		<div className='itemList'>
 			{tasks.map((task) => (
-				<ToDoItem
-					title={task.title}
-					completed={task.completed}
-					id={task.id}
-				/>
+				<div>
+					<ToDoItem
+						title={task.title}
+						completed={task.completed}
+						id={task.id}
+						key={task.id}
+					/>
+				</div>
 			))}
 		</div>
 	);
