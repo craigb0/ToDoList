@@ -1,5 +1,5 @@
 import {useDispatch} from "react-redux";
-import {removeTask} from "../redux/taskListSlice";
+import {editTask, removeTask} from "../redux/taskListSlice";
 import {decrement} from "../redux/idSlice";
 import {
 	MDBCard,
@@ -15,8 +15,8 @@ import {
 	MDBModalBody,
 	MDBModalFooter,
 } from "mdb-react-ui-kit";
-import {useState} from "react";
-import TaskForm from "./taskForm";
+import {useEffect, useState} from "react";
+import TaskForm from "./TaskForm";
 
 const ToDoItem = (props) => {
 	const dispatch = useDispatch();
@@ -27,30 +27,36 @@ const ToDoItem = (props) => {
 	};
 
 	const [modalVis, setModalVis] = useState(false);
-	const [name, setName] = useState(props.title);
-	const [done, setDone] = useState(props.completed);
-	const [tempName, setTempName] = useState(name);
-	const [tempDone, setTempDone] = useState(done);
+	const [tempName, setTempName] = useState(props.title);
+	const [tempDone, setTempDone] = useState(props.completed);
 
 	const handleEditClick = () => {
-		setName(tempName);
-		setDone(tempDone);
+		console.log(tempName);
+
+		dispatch(
+			editTask([
+				props.id,
+				{title: tempName, completed: tempDone, id: props.id},
+			])
+		);
 		toggleModal();
 	};
 
 	const toggleModal = () => {
 		setModalVis(!modalVis);
-		setTempName(name);
-		setTempDone(done);
+		setTempName(props.title);
+		setTempDone(props.completed);
 	};
 
 	return (
-		<div className='bg-dark'>
-			<MDBCard shadow='0' border='black' background='Black'>
+		<div>
+			<MDBCard shadow='0' border='black' alignment='center'>
 				<MDBCardBody>
-					<MDBCardTitle>{name}</MDBCardTitle>
+					<MDBCardTitle>
+						{props.title} {props.id}
+					</MDBCardTitle>
 					<MDBCardText>
-						{done === true ? "Done" : "Not done"}
+						{props.completed === true ? "Done" : "Not done"}
 					</MDBCardText>
 					<MDBBtn outline onClick={toggleModal}>
 						Edit
