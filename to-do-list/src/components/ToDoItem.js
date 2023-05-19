@@ -31,8 +31,6 @@ const ToDoItem = (props) => {
 	const [tempDone, setTempDone] = useState(props.completed);
 
 	const handleEditClick = () => {
-		console.log(tempName);
-
 		dispatch(
 			editTask([
 				props.id,

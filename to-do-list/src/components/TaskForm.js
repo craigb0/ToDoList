@@ -1,22 +1,28 @@
 import {useState} from "react";
+import {MDBCheckbox, MDBCol, MDBInput} from "mdb-react-ui-kit";
 
 const TaskForm = (props) => {
 	return (
-		<div className='TaskForm'>
-			Task Name:{" "}
-			<input
-				type='text'
-				value={props.title}
-				onChange={(e) => props.changeName(e.target.value)}
-			/>
-			<br></br>
-			Done:{" "}
-			<input
-				type='checkbox' //won't uncheck for some reason
-				value={props.completed}
-				onChange={(e) => props.changeDone(e.target.checked)}
-			/>
-		</div>
+		<form>
+			<MDBCol className='d-flex justify-content-center'>
+				<MDBInput
+					label='Task name'
+					id='name'
+					type='text'
+					placeholder={props.title}
+					onChange={(e) => props.changeName(e.target.value)}
+				/>
+			</MDBCol>
+			<MDBCol className='d-flex justify-content-center'>
+				<MDBCheckbox
+					id='done'
+					label='Completed'
+					type='checkbox'
+					placeholder={props.completed}
+					onChange={(e) => props.changeDone(e.target.checked)}
+				/>
+			</MDBCol>
+		</form>
 	);
 };
 
