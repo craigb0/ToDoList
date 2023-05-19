@@ -52,9 +52,7 @@ const ToDoItem = (props) => {
 		<div>
 			<MDBCard shadow='0' border='black' alignment='center'>
 				<MDBCardBody>
-					<MDBCardTitle>
-						{props.title} {props.id}
-					</MDBCardTitle>
+					<MDBCardTitle>{props.title}</MDBCardTitle>
 					<MDBCardText>
 						{props.completed === true ? "Done" : "Not done"}
 					</MDBCardText>
