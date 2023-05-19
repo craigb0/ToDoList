@@ -35,9 +35,7 @@ const App = () => {
 					style={{height: "15vh"}}
 				>
 					<div className='text-center'>
-						<h1 className='mb-3'>
-							To Do List {useSelector(selectId)}
-						</h1>
+						<h1 className='mb-3'>To Do List</h1>
 						<AddButton />
 					</div>
 				</div>

@@ -1,5 +1,5 @@
 import React from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 import {
 	MDBBtn,
@@ -11,20 +11,34 @@ import {
 	MDBModalBody,
 	MDBModalFooter,
 } from "mdb-react-ui-kit";
+import {increment, selectId} from "../redux/idSlice";
+import {addTask} from "../redux/taskListSlice";
+import TaskForm from "./TaskForm";
 
 const AddButton = (props) => {
 	const dispatch = useDispatch();
+	const id = useSelector(selectId);
 	const [modalVis, setModalVis] = useState(false);
-	const [name, setName] = useState("");
-	const [done, setDone] = useState(false);
+	const [tempName, setTempName] = useState("");
+	const [tempDone, setTempDone] = useState(false);
 
 	const toggleModal = () => {
 		setModalVis(!modalVis);
-		setName("");
-		setDone(false);
+		setTempName("");
+		setTempDone(false);
 	};
 
-	const handleClick = () => {};
+	const handleClick = () => {
+		dispatch(
+			addTask({
+				title: tempName,
+				completed: tempDone,
+				id: id,
+			})
+		);
+		dispatch(increment());
+		toggleModal();
+	};
 
 	return (
 		<div className='AddButton'>
@@ -35,20 +49,30 @@ const AddButton = (props) => {
 				<MDBModalDialog>
 					<MDBModalContent>
 						<MDBModalHeader>
-							<MDBModalTitle>Modal title</MDBModalTitle>
+							<MDBModalTitle>Add Task</MDBModalTitle>
 							<MDBBtn
 								className='btn-close'
 								color='none'
 								onClick={toggleModal}
 							></MDBBtn>
 						</MDBModalHeader>
-						<MDBModalBody>...</MDBModalBody>
+						<MDBModalBody>
+							<TaskForm
+								title={tempName}
+								completed={tempDone}
+								taskId={useSelector(selectId)}
+								changeName={setTempName}
+								changeDone={setTempDone}
+							/>
+						</MDBModalBody>
 
 						<MDBModalFooter>
 							<MDBBtn color='secondary' onClick={toggleModal}>
 								Close
 							</MDBBtn>
-							<MDBBtn>Save changes</MDBBtn>
+							<MDBBtn onClick={() => handleClick()}>
+								Save changes
+							</MDBBtn>
 						</MDBModalFooter>
 					</MDBModalContent>
 				</MDBModalDialog>
