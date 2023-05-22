@@ -7,6 +7,8 @@ import {selectId, setId} from "./redux/idSlice";
 import {useSelector, useDispatch} from "react-redux";
 import {setList} from "./redux/taskListSlice";
 import {MDBContainer} from "mdb-react-ui-kit";
+import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
+import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -28,7 +30,7 @@ const App = () => {
 	}, []);
 
 	return (
-		<div>
+		<LocalizationProvider dateAdapter={AdapterDayjs}>
 			<MDBContainer fluid>
 				<div
 					className='d-flex justify-content-center align-items-top'
@@ -45,7 +47,7 @@ const App = () => {
 					<ItemList />
 				</div>
 			</MDBContainer>
-		</div>
+		</LocalizationProvider>
 	);
 };
 

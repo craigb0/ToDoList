@@ -14,9 +14,12 @@ import {
 	MDBModalTitle,
 	MDBModalBody,
 	MDBModalFooter,
+	MDBCardFooter,
+	MDBIcon,
 } from "mdb-react-ui-kit";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import TaskForm from "./TaskForm";
+import RemindButton from "./RemindButton";
 
 const ToDoItem = (props) => {
 	const dispatch = useDispatch();
@@ -52,11 +55,28 @@ const ToDoItem = (props) => {
 				<MDBCardBody>
 					<MDBCardTitle>{props.title}</MDBCardTitle>
 					<MDBCardText>
-						{props.completed === true ? "Done" : "Not done"}
+						<div style={{float: "center"}}>
+							{props.completed === true ? "Done" : "Not done"}
+						</div>
+						<div style={{float: "right"}}>
+							<RemindButton />
+							<MDBBtn
+								color='tertiary'
+								floating
+								onClick={toggleModal}
+							>
+								<MDBIcon icon='edit' />
+							</MDBBtn>
+							<MDBBtn
+								color='tertiary'
+								style={{color: "#dd4b39"}}
+								floating
+								onClick={handleDelClick}
+							>
+								<MDBIcon icon='trash' />
+							</MDBBtn>
+						</div>
 					</MDBCardText>
-					<MDBBtn outline onClick={toggleModal}>
-						Edit
-					</MDBBtn>
 					<MDBModal
 						show={modalVis}
 						setShow={setModalVis}
@@ -96,9 +116,6 @@ const ToDoItem = (props) => {
 							</MDBModalContent>
 						</MDBModalDialog>
 					</MDBModal>{" "}
-					<MDBBtn outline color='danger' onClick={handleDelClick}>
-						Delete
-					</MDBBtn>
 				</MDBCardBody>
 			</MDBCard>
 		</div>
