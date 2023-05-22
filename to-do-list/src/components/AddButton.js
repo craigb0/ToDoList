@@ -25,7 +25,6 @@ const AddButton = (props) => {
 	const toggleModal = () => {
 		setTempName("");
 		setTempDone(false);
-		console.log(tempName);
 		setModalVis(!modalVis);
 	};
 
@@ -61,7 +60,7 @@ const AddButton = (props) => {
 							<TaskForm
 								title={tempName}
 								completed={tempDone}
-								// taskId={useSelector(selectId)}
+								hint={false}
 								changeName={setTempName}
 								changeDone={setTempDone}
 							/>

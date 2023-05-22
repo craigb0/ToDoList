@@ -76,7 +76,7 @@ const ToDoItem = (props) => {
 									<TaskForm
 										title={tempName}
 										completed={tempDone}
-										taskId={props.id}
+										hint={true}
 										changeName={setTempName}
 										changeDone={setTempDone}
 									/>
