@@ -16,14 +16,14 @@ import {Alert, Snackbar} from "@mui/material";
 
 const RemindButton = () => {
 	const [modalVis, setModalVis] = useState(false);
-	const [time, setTime] = useState(dayjs().add(10, "minutes"));
+	const [time, setTime] = useState(dayjs().add(600, "seconds"));
 	const [running, setRunning] = useState(false);
 	const [secs, setSecs] = useState(0);
 	const [alarmVis, setAlarmVis] = useState(false);
 
 	const saveTime = () => {
 		setRunning(true);
-		setSecs(time.diff(dayjs(), "seconds"));
+		setSecs(time.diff(dayjs(), "second"));
 		toggleModal();
 	};
 
