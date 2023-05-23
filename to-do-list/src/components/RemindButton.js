@@ -1,4 +1,4 @@
-import {renderTimeViewClock, DateTimePicker} from "@mui/x-date-pickers";
+import {DateTimePicker} from "@mui/x-date-pickers";
 import {
 	MDBBtn,
 	MDBIcon,
@@ -42,6 +42,10 @@ const RemindButton = () => {
 		setAlarmVis(false);
 		setRunning(false);
 	};
+	const cancel = () => {
+		setRunning(false);
+		setSecs(0);
+	};
 
 	useEffect(() => {
 		let timer;
@@ -73,9 +77,7 @@ const RemindButton = () => {
 					<MDBModalDialog>
 						<MDBModalContent>
 							<MDBModalHeader>
-								<MDBModalTitle>
-									Set Reminder{time.format("DD:HH:mm")}
-								</MDBModalTitle>
+								<MDBModalTitle>Set Reminder</MDBModalTitle>
 								<MDBBtn
 									className='btn-close'
 									color='none'
@@ -94,7 +96,7 @@ const RemindButton = () => {
 								<MDBBtn color='secondary' onClick={toggleModal}>
 									Close
 								</MDBBtn>
-								<MDBBtn onClick={saveTime}>Save changes</MDBBtn>
+								<MDBBtn onClick={saveTime}>Set reminder</MDBBtn>
 							</MDBModalFooter>
 						</MDBModalContent>
 					</MDBModalDialog>
@@ -118,14 +120,19 @@ const RemindButton = () => {
 									onClick={toggleModal}
 								></MDBBtn>
 							</MDBModalHeader>
-							<MDBModalBody>{secs}</MDBModalBody>
+							<MDBModalBody>
+								{Math.floor(secs / 86400)}:
+								{new Date((secs % 86400) * 1000)
+									.toISOString()
+									.slice(11, 19)}
+							</MDBModalBody>
 
 							<MDBModalFooter>
 								<MDBBtn color='secondary' onClick={toggleModal}>
 									Close
 								</MDBBtn>
-								<MDBBtn onClick={toggleModal}>
-									Save changes
+								<MDBBtn color='danger' onClick={cancel}>
+									Cancel
 								</MDBBtn>
 							</MDBModalFooter>
 						</MDBModalContent>
