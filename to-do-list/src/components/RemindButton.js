@@ -12,25 +12,35 @@ import {
 } from "mdb-react-ui-kit";
 import {useEffect, useState} from "react";
 import * as dayjs from "dayjs";
+import {Alert, Snackbar} from "@mui/material";
 
 const RemindButton = () => {
 	const [modalVis, setModalVis] = useState(false);
 	const [time, setTime] = useState(dayjs().add(10, "minutes"));
 	const [running, setRunning] = useState(false);
 	const [secs, setSecs] = useState(0);
+	const [alarmVis, setAlarmVis] = useState(false);
 
 	const saveTime = () => {
 		setRunning(true);
 		setSecs(time.diff(dayjs(), "seconds"));
-		console.log(time);
-		toggleModal(true);
+		toggleModal();
 	};
 
-	const toggleModal = (noReset = false) => {
-		if (noReset) {
+	const toggleModal = () => {
+		if (!running) {
 			setTime(dayjs().add(10, "minutes"));
 		}
 		setModalVis(!modalVis);
+	};
+
+	const alarm = () => {
+		setAlarmVis(true);
+	};
+
+	const closeAlarm = () => {
+		setAlarmVis(false);
+		setRunning(false);
 	};
 
 	useEffect(() => {
@@ -40,7 +50,7 @@ const RemindButton = () => {
 				setSecs((prevSecs) => {
 					if (prevSecs <= 0) {
 						clearInterval(timer);
-						setRunning(false);
+						alarm();
 						return 0;
 					}
 					return prevSecs - 1;
@@ -121,6 +131,15 @@ const RemindButton = () => {
 						</MDBModalContent>
 					</MDBModalDialog>
 				</MDBModal>
+				<Snackbar open={alarmVis} onClose={closeAlarm}>
+					<Alert
+						onClose={closeAlarm}
+						severity='info'
+						sx={{width: "100%"}}
+					>
+						Task done!
+					</Alert>
+				</Snackbar>
 			</>
 		);
 	}
