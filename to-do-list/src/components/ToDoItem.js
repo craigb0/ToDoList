@@ -14,7 +14,6 @@ import {
 	MDBModalTitle,
 	MDBModalBody,
 	MDBModalFooter,
-	MDBCardFooter,
 	MDBIcon,
 } from "mdb-react-ui-kit";
 import {useState} from "react";
@@ -59,7 +58,7 @@ const ToDoItem = (props) => {
 							{props.completed === true ? "Done" : "Not done"}
 						</div>
 						<div style={{float: "right"}}>
-							<RemindButton />
+							<RemindButton name={props.title} />
 							<MDBBtn
 								color='tertiary'
 								floating

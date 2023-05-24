@@ -14,7 +14,7 @@ import {useEffect, useState} from "react";
 import * as dayjs from "dayjs";
 import {Alert, Snackbar} from "@mui/material";
 
-const RemindButton = () => {
+const RemindButton = (props) => {
 	const [modalVis, setModalVis] = useState(false);
 	const [time, setTime] = useState(dayjs().add(600, "seconds"));
 	const [running, setRunning] = useState(false);
@@ -144,7 +144,7 @@ const RemindButton = () => {
 						severity='info'
 						sx={{width: "100%"}}
 					>
-						Task done!
+						{props.name} done!
 					</Alert>
 				</Snackbar>
 			</>
