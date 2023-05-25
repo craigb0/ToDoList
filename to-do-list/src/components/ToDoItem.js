@@ -31,6 +31,7 @@ const ToDoItem = (props) => {
 	const [modalVis, setModalVis] = useState(false);
 	const [tempName, setTempName] = useState(props.title);
 	const [tempDone, setTempDone] = useState(props.completed);
+	const [secs, setSecs] = useState(0);
 
 	const handleEditClick = () => {
 		dispatch(
@@ -57,8 +58,20 @@ const ToDoItem = (props) => {
 						<div style={{float: "center"}}>
 							{props.completed === true ? "Done" : "Not done"}
 						</div>
+						<div style={{float: "center"}}>
+							{secs >>> 0 ? Math.floor(secs / 86400) + ":" : ""}
+							{secs >>> 0
+								? new Date((secs % 86400) * 1000)
+										.toISOString()
+										.slice(11, 19)
+								: ""}
+						</div>
 						<div style={{float: "right"}}>
-							<RemindButton name={props.title} />
+							<RemindButton
+								name={props.title}
+								secs={secs}
+								setSecs={setSecs}
+							/>
 							<MDBBtn
 								color='tertiary'
 								floating

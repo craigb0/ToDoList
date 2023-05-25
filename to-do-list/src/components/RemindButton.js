@@ -18,12 +18,11 @@ const RemindButton = (props) => {
 	const [modalVis, setModalVis] = useState(false);
 	const [time, setTime] = useState(dayjs().add(600, "seconds"));
 	const [running, setRunning] = useState(false);
-	const [secs, setSecs] = useState(0);
 	const [alarmVis, setAlarmVis] = useState(false);
 
 	const saveTime = () => {
 		setRunning(true);
-		setSecs(time.diff(dayjs(), "second"));
+		props.setSecs(time.diff(dayjs(), "second"));
 		toggleModal();
 	};
 
@@ -44,14 +43,14 @@ const RemindButton = (props) => {
 	};
 	const cancel = () => {
 		setRunning(false);
-		setSecs(0);
+		props.setSecs(0);
 	};
 
 	useEffect(() => {
 		let timer;
 		if (running) {
 			timer = setInterval(() => {
-				setSecs((prevSecs) => {
+				props.setSecs((prevSecs) => {
 					if (prevSecs <= 0) {
 						clearInterval(timer);
 						alarm();
@@ -121,8 +120,8 @@ const RemindButton = (props) => {
 								></MDBBtn>
 							</MDBModalHeader>
 							<MDBModalBody>
-								{Math.floor(secs / 86400)}:
-								{new Date((secs % 86400) * 1000)
+								{Math.floor(props.secs / 86400)}:
+								{new Date((props.secs % 86400) * 1000)
 									.toISOString()
 									.slice(11, 19)}
 							</MDBModalBody>
@@ -131,8 +130,13 @@ const RemindButton = (props) => {
 								<MDBBtn color='secondary' onClick={toggleModal}>
 									Close
 								</MDBBtn>
-								<MDBBtn color='danger' onClick={cancel}>
-									Cancel
+								<MDBBtn
+									color={
+										props.secs >>> 0 ? "danger" : "success"
+									}
+									onClick={cancel}
+								>
+									{props.secs >>> 0 ? "Cancel" : "Done"}
 								</MDBBtn>
 							</MDBModalFooter>
 						</MDBModalContent>
