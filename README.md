@@ -8,5 +8,11 @@ Here are some tips to get started:
 
 Use a library such as Axios to make HTTP requests to the API. Use React's state and props to manage the data and pass it between components. Think about how you want to structure your components and what props they will need. You might have a "List" component that renders the individual "Item" components, for example. Use event handlers to handle user interactions, such as clicking a button to delete an item or submitting a form to add or edit an item. Use conditional rendering to display different components or messages based on the state of the application. Use loading indicators to inform the user when the application is fetching data from the API. Display the list of items, including their completion status.
 
-Added Functionality:
+Update 1:
 General updates to the app, added reminder functionality for the To-do list items, shows notifications on the scheduled reminder time
+
+Update 2:
+Added the timer inside the list instead of popup
+
+Use any serverless cloud provider like: Firebase or Azure function, to create a simple Database for the To-do list app, and start to store the added tasks on this database (Add, Edit, delete, should be on the DB).
+Use MS Azure to handle authentication to the app, and handle that the user can't view their To-do list items until they're logged-in
