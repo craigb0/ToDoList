@@ -16,19 +16,7 @@ const NavBar = (props) => {
 	return (
 		<header>
 			<MDBNavbar expand='lg' light bgColor='white'>
-				<MDBContainer fluid>
-					<MDBNavbarToggler
-						onClick={() => setVis(!vis)}
-						aria-controls='navbarExample01'
-						aria-expanded='false'
-						aria-label='Toggle navigation'
-					>
-						<MDBIcon fas icon='bars' />
-					</MDBNavbarToggler>
-					<MDBCollapse navbar center show={vis}>
-						<MDBNavbarNav className='d-flex align-content-center flex-wrap'></MDBNavbarNav>
-					</MDBCollapse>
-				</MDBContainer>
+				<MDBContainer fluid></MDBContainer>
 			</MDBNavbar>
 		</header>
 	);

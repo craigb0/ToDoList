@@ -11,6 +11,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {msalConfig} from "./authConfig.js";
 import Layout from "./pages/Layout";
 import Main from "./pages/Main";
+import Login from "./pages/Login";
 
 // const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -41,7 +42,8 @@ root.render(
 			<BrowserRouter>
 				<Routes>
 					<Route path='/' element={<Layout />}>
-						<Route index element={<Main />} />
+						<Route index element={<Login />} />
+						<Route path='list' element={<Main />} />
 					</Route>
 				</Routes>
 			</BrowserRouter>
